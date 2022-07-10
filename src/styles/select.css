@@ -1,0 +1,26 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: white;
+  border-radius: 2px;
+  padding: 10px;
+  padding-left: 32px;
+  color: #5d686e;
+
+  position: relative;
+}
+
+.input-container label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2f4eb4;
+}
+
+.icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9d9d9c;
+}
