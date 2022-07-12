@@ -22,6 +22,7 @@ const Select = ({
         id={id}
         showSearch
         loading={loading}
+        notFoundContent={loading ? "Yükleniyor..." : "Kayıt Bulunamadı"}
         value={value}
         placeholder={placeholder}
         options={options}
