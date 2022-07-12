@@ -8,7 +8,7 @@ import { ArrowRight } from "@/icons";
 import { JourneySkeleton } from "@/components";
 
 const Journeys = () => {
-  const [journeys, setJourneys] = useState([]);
+  const [journeys, setJourneys] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -64,8 +64,10 @@ const Journeys = () => {
             </div>
           ))}
 
+        {!loading && journeys?.length === 0 && "Sefer Bulunamadı!"}
+
         {!loading &&
-          journeys.map((x) => (
+          journeys?.map((x) => (
             <div key={x.id} className="journey-card">
               <div className="journey-price">
                 {x.journey["internet-price"].toFixed(2)}₺
