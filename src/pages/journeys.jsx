@@ -62,7 +62,7 @@ const Journeys = () => {
           journeys.map((x) => (
             <div key={x.id} className="journey-card">
               <div className="journey-price">
-                {x.journey["internet-price"].toFixed(2)} {x.journey.currency}
+                {x.journey["internet-price"].toFixed(2)}₺
               </div>
 
               <div className="journey__content">
