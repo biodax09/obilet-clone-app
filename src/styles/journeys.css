@@ -1,0 +1,80 @@
+.journey-skeleton {
+  border-radius: 3px;
+  border: 1px solid rgba(243, 243, 243);
+  background: white;
+}
+.journey-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 12px;
+  padding: 8px;
+  background-color: #f3f3f3;
+}
+.journey-card {
+  background: white;
+  border: 1px solid #b4b4b4;
+  border-radius: 3px;
+  min-height: 72px;
+  position: relative;
+  padding: 10px 8px;
+}
+.journey-price {
+  font-weight: 500;
+  background-color: #d23b38;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  padding: 4px 8px;
+  top: 10px;
+  right: 8px;
+  position: absolute;
+}
+
+.journey__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.journey__content .info {
+  display: flex;
+  gap: 22px;
+  position: relative;
+}
+
+.journey__content .info svg {
+  position: absolute;
+  bottom: 5px;
+  left: 46px;
+  color: #192289;
+  font-size: 10px;
+}
+
+.title_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title_wrapper .title {
+  color: #3640b1;
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+.title_wrapper .subtitle {
+  color: #192289;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.journey__content .text {
+  color: #083145;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 6px;
+  width: 65%;
+}

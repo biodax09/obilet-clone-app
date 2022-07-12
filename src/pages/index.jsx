@@ -1,8 +1,9 @@
 import React, { useId, useState, useEffect } from "react";
 import dayjs from "dayjs";
+import { useRouter } from "next/router";
 import { message } from "antd";
 
-import { Select, DatePicker } from "@/components";
+import { Select, DatePicker, Header, Footer } from "@/components";
 import { MapIcon, SwitchIcon } from "@/icons";
 import { useAuth } from "@/hooks";
 
@@ -14,18 +15,27 @@ const Home = () => {
   const [busLocations, setBusLocations] = useState(null);
   const [isBusLocationsBusy, setIsBusLocationsBusy] = useState(false);
 
-  const canSubmit = origin !== destination && origin && destination && date;
+  const router = useRouter();
+
+  const canSubmit =
+    origin?.value !== destination?.value &&
+    origin?.value &&
+    destination?.value &&
+    date;
 
   useEffect(() => {
-    if (!origin || !destination) return;
+    if (!origin?.value || !destination?.value) return;
 
-    if (origin === destination) {
+    if (origin?.value === destination?.value) {
       message.error({
         content: "Kalkış yeriyle varış yeri aynı olamaz!",
         duration: 3,
       });
+
+      setOrigin(null);
+      setDestination(null);
     }
-  }, [origin, destination]);
+  }, [origin?.value, destination?.value]);
 
   useEffect(() => {
     const origin = localStorage.getItem("origin");
@@ -79,44 +89,64 @@ const Home = () => {
     setDestination(origin);
   };
 
+  const onSubmit = () => {
+    router.push({
+      pathname: "/journeys",
+      query: {
+        origin: origin?.label,
+        destination: destination?.label,
+        originId: origin?.value,
+        destinationId: destination?.value,
+        departureDate: dayjs(date).toISOString(),
+      },
+    });
+  };
+
   return (
-    <main className="home__content">
-      <div className="home__content__input-wrapper">
-        <div className="selectwrapper">
-          <Select
-            id={useId()}
-            value={origin}
-            label="Nereden"
-            placeholder="İstanbul Avrupa"
-            options={busLocations}
-            onChange={onOriginChange}
-            loading={isBusLocationsBusy}
+    <>
+      <main className="home__content">
+        <div className="home__content__input-wrapper">
+          <div className="selectwrapper">
+            <Select
+              id={useId()}
+              value={origin}
+              label="Nereden"
+              placeholder="İstanbul Avrupa"
+              options={busLocations}
+              onChange={onOriginChange}
+              loading={isBusLocationsBusy}
+            />
+            <button onClick={onSwitch} className="switchbutton">
+              <SwitchIcon />
+            </button>
+            <Select
+              id={useId()}
+              value={destination}
+              label="Nereye"
+              placeholder="Ankara"
+              options={busLocations}
+              onChange={onDestinationChange}
+              loading={isBusLocationsBusy}
+            />
+          </div>
+
+          <DatePicker
+            label="Tarih"
+            value={date}
+            onChange={(date) => setDate(date)}
           />
-          <button onClick={onSwitch} className="switchbutton">
-            <SwitchIcon />
+
+          <button
+            className="searchButton"
+            onClick={onSubmit}
+            disabled={!canSubmit}
+          >
+            Bileti Bul
           </button>
-          <Select
-            id={useId()}
-            value={destination}
-            label="Nereye"
-            placeholder="Ankara"
-            options={busLocations}
-            onChange={onDestinationChange}
-            loading={isBusLocationsBusy}
-          />
         </div>
-
-        <DatePicker
-          label="Tarih"
-          value={date}
-          onChange={(date) => setDate(date)}
-        />
-
-        <button className="searchButton" disabled={!canSubmit}>
-          Bileti Bul
-        </button>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 };
 

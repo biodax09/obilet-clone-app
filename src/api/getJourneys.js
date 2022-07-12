@@ -20,9 +20,9 @@ const getJourneys = async ({
       date: dayjs().format(dateFormat),
       language: "tr-TR",
       data: {
-        "origin-id": originId,
-        "destination-id": destinationId,
-        "departure-date": departureDate,
+        "origin-id": +originId,
+        "destination-id": +destinationId,
+        "departure-date": dayjs(departureDate).format(dateFormat),
       },
     }),
     headers: {
