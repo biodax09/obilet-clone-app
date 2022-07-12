@@ -104,6 +104,7 @@ const Home = () => {
 
   return (
     <>
+      <title>Bilet Arayın - obilet.com </title>
       <main className="home__content">
         <div className="home__content__input-wrapper">
           <div className="selectwrapper">

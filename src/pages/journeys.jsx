@@ -45,6 +45,8 @@ const Journeys = () => {
 
   return (
     <>
+      <title>Bilet Seçin - obilet.com </title>
+
       <div
         className="journey-list"
         style={{ backgroundColor: loading ? "white" : "#f3f3f3" }}
