@@ -92,13 +92,13 @@ const Home = () => {
 
   const onSubmit = () => {
     router.push({
-      pathname: "/journeys",
+      pathname: "/journeys/",
       query: {
         origin: origin?.label,
         destination: destination?.label,
         originId: origin?.value,
         destinationId: destination?.value,
-        departureDate: dayjs(date).toISOString(),
+        departureDate: dayjs(date).format("YYYY-MM-DD"),
       },
     });
   };

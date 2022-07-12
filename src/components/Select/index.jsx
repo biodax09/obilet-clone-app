@@ -31,7 +31,6 @@ const Select = ({
             .includes(input.toLocaleLowerCase("tr"))
         }
         showArrow={true}
-        suffixIcon={null}
         onChange={onChange}
       />
     </div>
