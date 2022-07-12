@@ -1,4 +1,5 @@
 import React, { useId, useState, useEffect } from "react";
+import Head from "next/head";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { message } from "antd";
@@ -104,7 +105,9 @@ const Home = () => {
 
   return (
     <>
-      <title>Bilet Arayın - obilet.com </title>
+      <Head>
+        <title>Bilet Arayın - obilet.com </title>
+      </Head>
       <main className="home__content">
         <div className="home__content__input-wrapper">
           <div className="selectwrapper">

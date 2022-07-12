@@ -1,3 +1,4 @@
+import Head from "next/head";
 import AuthContextProvider from "@/context/AuthContext";
 import { Header } from "@/components";
 
@@ -10,10 +11,12 @@ import Journeys from "./journeys";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1"
-      />
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+      </Head>
       <AuthContextProvider>
         <Header />
         <Component {...pageProps} />

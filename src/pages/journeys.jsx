@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 
@@ -13,7 +14,8 @@ const Journeys = () => {
   const router = useRouter();
   const session = useAuth();
 
-  const { originId, destinationId, departureDate } = router.query;
+  const { origin, destination, originId, destinationId, departureDate } =
+    router.query;
 
   useEffect(() => {
     if (!session || (!originId && !destinationId)) return;
@@ -45,7 +47,11 @@ const Journeys = () => {
 
   return (
     <>
-      <title>Bilet Seçin - obilet.com </title>
+      <Head>
+        <title>
+          {origin} - {destination} Otobüs Seferleri - obilet.com
+        </title>
+      </Head>
 
       <div
         className="journey-list"
