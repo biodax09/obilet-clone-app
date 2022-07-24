@@ -65,7 +65,7 @@ const Home = () => {
 
       setIsBusLocationsBusy(false);
       setBusLocations(
-        result.map((loc) => ({
+        result?.map((loc) => ({
           value: loc.id,
           label: loc.name,
         }))
